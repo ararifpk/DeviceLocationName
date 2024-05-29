@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send Location</title>
+    <script>
+        function sendLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            var name = document.getElementById("name").value;
+            var lat = position.coords.latitude;
+            var lon = position.coords.longitude;
+            var url = "https://script.google.com/macros/s/AKfycbx1hJyauTRd7TzAqAjhxzhWbvMKl5AxlFicQTWtCn_P7lAHABT8hpW70rAe6Arg8HztYQ/exec" + encodeURIComponent(name) + "&lat=" + lat + "&lon=" + lon;
+
+            fetch(url)
+                .then(response => response.text())
+                .then(data => alert(data))
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</head>
+<body>
+    <h1>Send Location to Google Sheets</h1>
+    <input type="text" id="name" placeholder="Enter your name" required>
+    <button onclick="sendLocation()">Send Location</button>
+</body>
+</html>
