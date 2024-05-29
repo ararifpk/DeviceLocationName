@@ -15,7 +15,7 @@
             var name = document.getElementById("name").value;
             var lat = position.coords.latitude;
             var lon = position.coords.longitude;
-            var url = "YOUR_WEB_APP_URL?name=" + encodeURIComponent(name) + "&lat=" + lat + "&lon=" + lon;
+            var url = "https://script.google.com/macros/s/AKfycbx1hJyauTRd7TzAqAjhxzhWbvMKl5AxlFicQTWtCn_P7lAHABT8hpW70rAe6Arg8HztYQ/exec" + encodeURIComponent(name) + "&lat=" + lat + "&lon=" + lon;
 
             fetch(url)
                 .then(response => response.text())
